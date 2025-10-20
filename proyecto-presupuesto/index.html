@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación de Presupuesto</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Título con mes actual -->
+        <h1 class="month-title" id="month-title">Presupuesto de </h1>
+        
+        <div class="cards-container">
+            <!-- Tarjeta de Total Disponible -->
+            <div class="card total-card">
+                <div class="card-header">
+                    Total Disponible
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title" id="total-amount">+ 0.00</h3>
+                </div>
+            </div>
+            
+            <!-- Tarjeta de Ingresos -->
+            <div class="card income-card">
+                <div class="card-header">
+                    Ingresos
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title" id="income-amount">+ 0.00</h3>
+                </div>
+            </div>
+            
+            <!-- Tarjeta de Egresos -->
+            <div class="card expense-card">
+                <div class="card-header">
+                    Egresos
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title" id="expense-amount">- 0.00</h3>
+                    <p class="mb-0">Porcentaje de gastos: <span id="expense-percentage" class="percentage-display">0%</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="content-container">
+            <!-- Formulario para agregar transacciones -->
+            <div class="card">
+                <div class="card-header" style="background: #6c757d;">
+                    Agregar Transacción
+                </div>
+                <div class="card-body">
+                    <form id="transaction-form">
+                        <div class="form-group">
+                            <label for="transaction-type">Tipo</label>
+                            <select class="form-control" id="transaction-type" required>
+                                <option value="">Seleccione un tipo</option>
+                                <option value="income">Ingreso</option>
+                                <option value="expense">Egreso</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="transaction-description">Descripción</label>
+                            <input type="text" class="form-control" id="transaction-description" placeholder="Ej: Salario, Supermercado..." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="transaction-amount">Monto</label>
+                            <input type="number" class="form-control" id="transaction-amount" placeholder="0.00" step="0.01" min="0.01" required>
+                        </div>
+                        <button type="submit" class="btn-add">Agregar</button>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Lista de transacciones -->
+            <div class="card">
+                <div class="card-header" style="background: #f8f9fa; color: #000;">
+                    <div class="tabs">
+                        <button class="tab active" data-target="income-list">Ingresos</button>
+                        <button class="tab" data-target="expense-list">Egresos</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <!-- Lista de ingresos -->
+                    <div class="tab-content active" id="income-list">
+                        <div id="income-transactions">
+                            <p class="text-muted text-center">No hay ingresos registrados</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Lista de egresos -->
+                    <div class="tab-content" id="expense-list">
+                        <div id="expense-transactions">
+                            <p class="text-muted text-center">No hay egresos registrados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
